@@ -45,8 +45,47 @@ background-position属性允许奴选择背景图片出现在它所应用的盒�
 
 #### 偏移值的计算
 
-- 响应容器的尺寸 - 背景图片的尺寸 * x%
+- **(响应容器的尺寸 - 背景图片的尺寸) * x%**
 
 ### 渐变背景
 
-## 简写
+https://cssgradient.io/
+
+### 背景附加
+
+背景在内容滚动时的滚动方式，由background-attachment属性控制
+
+- scroll：使元素在背景在**页面**滚动时滚动，滚动页面内容背景则不会移动
+- fixed：使元素的背景固定在视口上，这样当**页面或者元素内容**滚动时，它就不会滚动
+- local：将背景固定在它所设置的元素上，**当你滚动该元素背景也随之滚动**
+
+**scroll和local的区别在于scroll在元素区块中不随着内容的滚动而滚动，它们都随着页面的滚动而滚动背景**
+
+### background-origin
+
+**指定背景图片background-image属性原点的位置**，当使用background-attachment为fixed时，该属性将被忽略不起作用
+
+- border-box，图片摆放以border区域为参考
+- padding-box，背景图片的摆放以padding区域为参考
+- content-box，背景图片的摆放以content区域为参考
+
+### background-clip
+
+设置背景的元素默认只会在padding盒子以内，通过background-clip来设置延申范围，**是对于背景的裁剪**
+
+- border-box
+- padding-box
+- content-box
+- text,将背景的范围只在文字上
+
+### 简写
+
+background：image || position/size || repeat || attachment || box || box || color 
+
+**background-origin和background-clip的区别：在于background-origin用于设置背景图片放置的位置，background-clip用于裁剪背景图片或者背景颜色**
+
+## 边框
+
+- border-color
+- border-style
+- border-width
