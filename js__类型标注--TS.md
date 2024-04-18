@@ -602,4 +602,43 @@ type Includes<Arr extends unknown[], FindItem> =
 ```
 
 删除一个数组项
+```ts
+type RemoveItem<
+  Arr extends unknown[],
+  Item,
+  Result extends unknown[] = []
+  > = Arr extends [infer First, ...infer Rest] 
+    ? IsEqual<First, Item> extends true
+      ? RemoveItem<Rest, Item, Result>
+      : RemoveItem<Rest, Item, [...Result, First]>
+    : Result;
+```
+
+构造一个数组类型，传入数组的长度和数组的元素类型
+```ts
+BuildArray<
+  Length extends number,
+  Ele = unknown,
+  Arr extends unknown[] = []
+> = Arr['length'] extends Length
+    ? Arr
+    : BuildArray<Length, Ele, [...Arr, Ele]>;
+```
+
+字符类型做递归
+对于多个一样的字符替换的处理
+
+```ts
+type ReplaceStrAll<
+  Str extends string,
+  From extends string,
+  To extends string
+> = Str extends `${infer Prefix}${From}${infer Suffix}`
+      ? `${Prefix}${To}${ReplaceStrAll<Suffix, From, To>}` : Str
+```
+
+
+
+
+
 -----------------
